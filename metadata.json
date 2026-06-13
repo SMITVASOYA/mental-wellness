@@ -1,0 +1,6 @@
+{
+  "name": "Student Wellness Companion",
+  "description": "Empathetic mental wellness tracker, stress trigger detector, and coping coach for exam aspirants.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
