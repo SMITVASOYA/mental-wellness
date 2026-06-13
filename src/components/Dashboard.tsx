@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { UserProfile, MoodEntry, JournalEntry } from "../types";
 import {
   Calendar,
@@ -9,9 +9,7 @@ import {
   Frown,
   BrainCircuit,
   Award,
-  ChevronRight,
   Heart,
-  Smile,
   ShieldAlert,
 } from "lucide-react";
 
@@ -36,8 +34,29 @@ export default function Dashboard({
   const [editName, setEditName] = useState(profile.name);
   const [editExam, setEditExam] = useState(profile.targetExam);
   const [editGoal, setEditGoal] = useState(profile.studyHoursGoal);
-
   const [toggledCopingItems, setToggledCopingItems] = useState<{ [key: string]: boolean }>({});
+
+  const settingsRef = useRef<HTMLDivElement>(null);
+  const settingsButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Focus trap / escape key listener for profile editor
+  useEffect(() => {
+    if (isEditingProfile) {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setIsEditingProfile(false);
+          settingsButtonRef.current?.focus();
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      
+      // Focus first input
+      const firstInput = settingsRef.current?.querySelector("input");
+      firstInput?.focus();
+
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [isEditingProfile]);
 
   const toggleCoping = (journalId: string, idx: number) => {
     const key = `${journalId}-${idx}`;
@@ -54,6 +73,7 @@ export default function Dashboard({
       studyHoursGoal: Number(editGoal) || 8,
     });
     setIsEditingProfile(false);
+    settingsButtonRef.current?.focus();
   };
 
   // Find latest compiled analysis
@@ -101,7 +121,7 @@ export default function Dashboard({
       <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-indigo-950 border border-slate-800 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row md:items-center justify-between">
         <div className="space-y-1.5">
           <div className="flex items-center space-x-2">
-            <span className="text-xl">{status.emoji}</span>
+            <span className="text-xl" role="img" aria-label="Status Emoticon">{status.emoji}</span>
             <h2 className="text-2xl font-bold font-sans tracking-tight text-slate-100">
               Welcome back, {profile.name}
             </h2>
@@ -110,7 +130,7 @@ export default function Dashboard({
             Focus Cockpit calibrated for <b className="text-indigo-400">{profile.targetExam}</b>. Remember: mocks diagnose preparation focus, they never declare your lifetime worth.
           </p>
           <div className="flex items-center space-x-2 text-[11px] text-slate-500 font-mono mt-1 select-none">
-            <Calendar className="w-3.5 h-3.5" />
+            <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
             <span>Preparation Track Term: 2026/2027</span>
             <span>•</span>
             <span>Micro focus target: {profile.studyHoursGoal} hrs/day</span>
@@ -118,26 +138,33 @@ export default function Dashboard({
         </div>
 
         {/* Profile Settings Quick Button */}
-        <div className="mt-4 md:mt-0 shrink-0">
+        <div className="mt-4 md:mt-0 shrink-0 relative">
           {isEditingProfile ? (
-            <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 w-64 text-left">
+            <div
+              ref={settingsRef}
+              className="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 w-64 text-left shadow-2xl z-10 absolute right-0 top-0"
+              role="dialog"
+              aria-label="Edit Profile Target Settings"
+            >
               <h4 className="text-xs font-bold text-indigo-400 uppercase">Aspirant Settings</h4>
               <div className="space-y-2">
                 <div>
-                  <label className="block text-[10px] text-slate-500 uppercase font-mono">My Name</label>
+                  <label htmlFor="edit-profile-name" className="block text-[10px] text-slate-500 uppercase font-mono">My Name</label>
                   <input
+                    id="edit-profile-name"
                     type="text"
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-slate-200 mt-1 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-slate-200 mt-1 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] text-slate-500 uppercase font-mono">Target Exam</label>
+                  <label htmlFor="edit-profile-exam" className="block text-[10px] text-slate-500 uppercase font-mono">Target Exam</label>
                   <select
+                    id="edit-profile-exam"
                     value={editExam}
                     onChange={(e) => setEditExam(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-slate-300 mt-1 focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-slate-300 mt-1 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                   >
                     <option value="JEE">JEE Mains & Advanced</option>
                     <option value="NEET">NEET UG (Medical)</option>
@@ -149,27 +176,28 @@ export default function Dashboard({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[10px] text-slate-500 uppercase font-mono">Focus Limit (Hours/day)</label>
+                  <label htmlFor="edit-profile-goal" className="block text-[10px] text-slate-500 uppercase font-mono">Focus Limit (Hours/day)</label>
                   <input
+                    id="edit-profile-goal"
                     type="number"
                     value={editGoal}
                     onChange={(e) => setEditGoal(Number(e.target.value))}
                     min={1}
                     max={18}
-                    className="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-slate-200 mt-1 focus:outline-none"
+                    className="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-slate-200 mt-1 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                   />
                 </div>
               </div>
               <div className="flex items-center justify-between space-x-2 pt-2 border-t border-slate-800">
                 <button
                   onClick={() => setIsEditingProfile(false)}
-                  className="text-[10px] text-slate-400 hover:text-slate-200"
+                  className="text-[10px] text-slate-400 hover:text-slate-200 focus:outline-none focus:underline"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleSaveProfile}
-                  className="bg-indigo-600 hover:bg-indigo-500 hover:border-indigo-500 px-3 py-1 rounded text-[10px] text-white font-medium"
+                  className="bg-indigo-600 hover:bg-indigo-550 px-3 py-1 rounded text-[10px] text-white font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
                   Apply Settings
                 </button>
@@ -177,10 +205,13 @@ export default function Dashboard({
             </div>
           ) : (
             <button
+              ref={settingsButtonRef}
               onClick={() => setIsEditingProfile(true)}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl text-slate-300 hover:text-slate-100 transition text-xs flex items-center space-x-2 cursor-pointer"
+              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl text-slate-300 hover:text-slate-100 transition text-xs flex items-center space-x-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              aria-haspopup="dialog"
+              aria-expanded={isEditingProfile}
             >
-              <Settings2 className="w-3.5 h-3.5" />
+              <Settings2 className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Modify Target Goal</span>
             </button>
           )}
@@ -190,7 +221,7 @@ export default function Dashboard({
       {/* 2. Key metrics and recommendations banner */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {/* Metric A: Over stress state */}
-        <div className={`p-4 rounded-2xl border ${status.cardBg} flex flex-col justify-between h-36 relative overflow-hidden shadow-md`}>
+        <div className={`p-4 rounded-2xl border ${status.cardBg} flex flex-col justify-between h-36 relative overflow-hidden shadow-md`} aria-label="Aspirant Focus Load Metric Card">
           <div>
             <span className="text-[10px] font-mono tracking-wider uppercase text-slate-500">Aspirant Focus Load</span>
             <div className="flex items-baseline space-x-2 mt-1">
@@ -204,7 +235,7 @@ export default function Dashboard({
         </div>
 
         {/* Metric B: High Stress triggers detected */}
-        <div className="p-4 rounded-2xl border border-slate-800 bg-slate-900 flex flex-col justify-between h-36 shadow-md">
+        <div className="p-4 rounded-2xl border border-slate-800 bg-slate-900 flex flex-col justify-between h-36 shadow-md" aria-label="Severe Burnout Intervals Metric Card">
           <div>
             <span className="text-[10px] font-mono tracking-wider uppercase text-slate-500">Severe Burnout Intervals</span>
             <div className="flex items-baseline space-x-2 mt-1">
@@ -218,12 +249,12 @@ export default function Dashboard({
         </div>
 
         {/* Metric C: Active Primary stress root trigger from latest Gemini Analysis */}
-        <div className="col-span-1 md:col-span-2 p-4 rounded-2xl border border-slate-800 bg-slate-900 flex flex-col justify-between h-36 relative overflow-hidden shadow-md">
+        <div className="col-span-1 md:col-span-2 p-4 rounded-2xl border border-slate-800 bg-slate-900 flex flex-col justify-between h-36 relative overflow-hidden shadow-md" aria-label="Isolated Active Stress Trigger Card">
           {latestAnalysis ? (
             <>
               <div>
                 <span className="text-[10px] font-mono tracking-wider uppercase text-indigo-400 flex items-center space-x-1.5 font-bold">
-                  <BrainCircuit className="w-3.5 h-3.5 text-indigo-400" />
+                  <BrainCircuit className="w-3.5 h-3.5 text-indigo-400" aria-hidden="true" />
                   <span>Isolated Active Stress Trigger</span>
                 </span>
                 <h4 className="text-sm font-bold text-slate-100 mt-1 tracking-tight truncate">
@@ -241,7 +272,7 @@ export default function Dashboard({
                 <h4 className="text-sm font-bold text-slate-400 mt-1 tracking-tight">Triggers Heatmap (Inactive)</h4>
               </div>
               <p className="text-[11px] text-slate-400 leading-normal">
-                Go to the <span className="text-indigo-400">Journal tab</span> and write about your test mock scores or study hurdles to let Gemini diagnose your exact stress triggers.
+                Go to the <span className="text-indigo-400 font-semibold">Journal tab</span> and write about your test mock scores or study hurdles to let Gemini diagnose your exact stress triggers.
               </p>
             </>
           )}
@@ -250,8 +281,8 @@ export default function Dashboard({
 
       {/* Safety / Crisis Immediate Alert Bar */}
       {latestAnalysis?.isSafetyFlagged && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500 rounded-2xl flex items-start space-x-4">
-          <ShieldAlert className="w-5 h-5 text-rose-500 shrink-0 mt-0.5 animate-pulse" />
+        <div className="p-4 bg-rose-500/10 border border-rose-500 rounded-2xl flex items-start space-x-4 animate-fade-in" role="alert">
+          <ShieldAlert className="w-5 h-5 text-rose-500 shrink-0 mt-0.5 animate-pulse" aria-hidden="true" />
           <div className="space-y-1.5 flex-1">
             <h4 className="text-xs font-bold text-rose-400 uppercase">Emergency Support Activation</h4>
             <p className="text-xs text-slate-200 leading-relaxed">
@@ -260,7 +291,7 @@ export default function Dashboard({
             <div className="flex items-center space-x-3 pt-1">
               <button
                 onClick={onTriggerCrisis}
-                className="bg-rose-600 hover:bg-rose-500 border border-rose-500 hover:border-rose-400 text-xs px-3.5 py-1.5 rounded-lg text-white font-medium shadow-md shadow-rose-950/20 transition cursor-pointer"
+                className="bg-rose-600 hover:bg-rose-500 border border-rose-500 hover:border-rose-400 text-xs px-3.5 py-1.5 rounded-lg text-white font-medium shadow-md shadow-rose-950/20 transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-rose-400"
               >
                 Unlock Local Helpline Contact Numbers
               </button>
@@ -270,10 +301,10 @@ export default function Dashboard({
       )}
 
       {/* 3. Deep emotional history feed list (Aspirant Diary Feed) */}
-      <div id="aspirant-diary-feed" className="space-y-4">
+      <div id="aspirant-diary-feed" className="space-y-4" aria-label="Aspirant Diary Reflection Feed">
         <div className="flex items-center justify-between border-b border-slate-800 pb-2">
           <div className="flex items-center space-x-2">
-            <BookOpen className="w-4 h-4 text-slate-400" />
+            <BookOpen className="w-4 h-4 text-slate-400" aria-hidden="true" />
             <h3 className="text-base font-semibold text-slate-200">Historical Emotional Feeds</h3>
           </div>
           <span className="text-[10px] text-slate-500 font-mono">Sorted by Newest entries first</span>
@@ -281,18 +312,19 @@ export default function Dashboard({
 
         {journals.length === 0 ? (
           <div className="p-12 text-center border border-dashed border-slate-800 rounded-2xl bg-slate-900/40">
-            <Frown className="w-8 h-8 text-slate-600 mx-auto mb-3" />
+            <Frown className="w-8 h-8 text-slate-600 mx-auto mb-3" aria-hidden="true" />
             <p className="text-sm font-sans text-slate-400">Your student journal log is completely empty.</p>
-            <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-              Open your notebook in the <span className="text-indigo-400 hover:underline">Self Reflection Tab</span> to write down what's worrying you and let your companion "Sarthi" help organize your thoughts.
+            <p className="text-xs text-slate-505 mt-1 max-w-sm mx-auto">
+              Open your notebook in the Self Reflection Tab to write down what's worrying you and let your companion "Sarthi" help organize your thoughts.
             </p>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-4" role="feed" aria-busy={false}>
             {journals.map((journal) => (
-              <div
+              <article
                 key={journal.id}
                 className="p-5 bg-slate-900 border border-slate-800 hover:border-slate-800/80 rounded-2xl shadow-sm transition space-y-4 text-left"
+                aria-label={`Reflection log from ${new Date(journal.timestamp).toLocaleDateString()}`}
               >
                 {/* Meta details header Row */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/60 pb-3">
@@ -337,20 +369,20 @@ export default function Dashboard({
                 </div>
 
                 {/* Main Client Journal Text reflection */}
-                <div className="text-xs text-slate-300 leading-relaxed border-l-2 border-slate-800 pl-3 italic select-text">
+                <blockquote className="text-xs text-slate-300 leading-relaxed border-l-2 border-slate-800 pl-3 italic select-text">
                   "{journal.entryText}"
-                </div>
+                </blockquote>
 
                 {/* Gemini Analysis Outcomes */}
                 {journal.analysisStatus === "pending" && (
-                  <div className="p-3 bg-slate-950/40 rounded-xl flex items-center space-x-3 text-xs text-slate-400 font-sans">
-                    <div className="w-3.5 h-3.5 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="p-3 bg-slate-950/40 rounded-xl flex items-center space-x-3 text-xs text-slate-400 font-sans" aria-live="polite">
+                    <div className="w-3.5 h-3.5 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
                     <span>Gemini is analyzing emotional markers and framing custom coping strategies...</span>
                   </div>
                 )}
 
                 {journal.analysisStatus === "failed" && (
-                  <div className="p-3 bg-rose-500/5 border border-rose-500/10 rounded-xl text-xs text-rose-400">
+                  <div className="p-3 bg-rose-500/5 border border-rose-500/10 rounded-xl text-xs text-rose-400" aria-live="polite">
                     Failed to run live GenAI trigger mapping. Your journal text is saved locally.
                   </div>
                 )}
@@ -360,10 +392,10 @@ export default function Dashboard({
                     {/* Empathetic Summary */}
                     <div className="col-span-1 md:col-span-3 p-3.5 bg-slate-950/40 border border-slate-800/80 rounded-xl space-y-2">
                       <h5 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center space-x-1.5 font-sans">
-                        <Heart className="w-3.5 h-3.5 text-rose-400" />
+                        <Heart className="w-3.5 h-3.5 text-rose-400" aria-hidden="true" />
                         <span>Sarthi validation check</span>
                       </h5>
-                      <p className="text-xs text-slate-300 leading-normal font-sans">
+                      <p className="text-xs text-slate-305 leading-normal font-sans">
                         {journal.analysis.empatheticSummary}
                       </p>
                     </div>
@@ -371,10 +403,10 @@ export default function Dashboard({
                     {/* Coping Checklist */}
                     <div className="col-span-1 md:col-span-2 p-3.5 bg-slate-950/40 border border-slate-800/80 rounded-xl space-y-2">
                       <h5 className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest flex items-center space-x-1.5 font-mono">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400" aria-hidden="true" />
                         <span>Personal Coping list</span>
                       </h5>
-                      <div className="space-y-1.5 text-[11px] leading-snug">
+                      <div className="space-y-1.5 text-[11px] leading-snug" role="group" aria-label="Coping checklist strategies">
                         {journal.analysis.copingStrategies.map((strategy, idx) => {
                           const itemKey = `${journal.id}-${idx}`;
                           const isCompleted = !!toggledCopingItems[itemKey];
@@ -383,14 +415,16 @@ export default function Dashboard({
                             <button
                               key={idx}
                               onClick={() => toggleCoping(journal.id, idx)}
-                              className={`w-full text-left flex items-start space-x-2 p-1.5 rounded hover:bg-slate-900/60 transition ${
-                                isCompleted ? "opacity-50 line-through text-slate-500" : "text-slate-300"
+                              aria-pressed={isCompleted}
+                              className={`w-full text-left flex items-start space-x-2 p-1.5 rounded hover:bg-slate-900/60 transition focus:outline-none focus:ring-1 focus:ring-indigo-500 ${
+                                isCompleted ? "opacity-50 line-through text-slate-500" : "text-slate-305"
                               }`}
                             >
                               <span
                                 className={`w-3.5 h-3.5 rounded border mt-0.5 shrink-0 flex items-center justify-center font-bold text-[9px] ${
                                   isCompleted ? "bg-emerald-500/20 text-emerald-400 border-emerald-500" : "border-slate-700"
                                 }`}
+                                aria-hidden="true"
                               >
                                 {isCompleted ? "✓" : ""}
                               </span>
@@ -402,7 +436,7 @@ export default function Dashboard({
                     </div>
                   </div>
                 )}
-              </div>
+              </article>
             ))}
           </div>
         )}
@@ -412,25 +446,26 @@ export default function Dashboard({
       <div id="mood-logs-table-section" className="p-5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl">
         <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
           <div className="flex items-center space-x-2">
-            <Award className="w-4 h-4 text-emerald-400" />
+            <Award className="w-4 h-4 text-emerald-400" aria-hidden="true" />
             <h3 className="text-base font-semibold text-slate-200">Daily Mind Balance Registers</h3>
           </div>
           <span className="text-xs text-slate-400">Cleared once study balance stabilizes</span>
         </div>
 
         {moods.length === 0 ? (
-          <p className="text-xs text-slate-500 text-center py-4">No daily logs registered yet.</p>
+          <p className="text-xs text-slate-505 text-center py-4">No daily logs registered yet.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left text-slate-300">
+              <caption className="sr-only">List of daily registered mind and stress scores</caption>
               <thead>
                 <tr className="border-b border-slate-800 text-slate-500 font-mono text-[9px] uppercase tracking-wider">
-                  <th className="py-2.5">Date</th>
-                  <th className="py-2.5">Mind Score</th>
-                  <th className="py-2.5">Stress Score</th>
-                  <th className="py-2.5">Context Tags</th>
-                  <th className="py-2.5">Daily Study Note</th>
-                  <th className="py-2.5 text-right">Action</th>
+                  <th scope="col" className="py-2.5">Date</th>
+                  <th scope="col" className="py-2.5">Mind Score</th>
+                  <th scope="col" className="py-2.5">Stress Score</th>
+                  <th scope="col" className="py-2.5">Context Tags</th>
+                  <th scope="col" className="py-2.5">Daily Study Note</th>
+                  <th scope="col" className="py-2.5 text-right">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/50">
@@ -472,8 +507,9 @@ export default function Dashboard({
                     <td className="py-2.5 text-right font-sans">
                       <button
                         onClick={() => onDeleteMood(mood.id)}
-                        className="p-1 hover:bg-rose-500/15 text-slate-500 hover:text-rose-400 rounded transition cursor-pointer"
+                        className="p-1 hover:bg-rose-500/15 text-slate-500 hover:text-rose-400 rounded transition cursor-pointer focus:outline-none focus:ring-1 focus:ring-rose-500"
                         title="Delete log"
+                        aria-label={`Delete mood log from ${new Date(mood.timestamp).toLocaleDateString()}`}
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>

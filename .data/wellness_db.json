@@ -1,0 +1,1764 @@
+{
+  "anonymous-default-user": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:27:17.524Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:27:17.527Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:27:17.527Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:33:17.527Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-0y056z861k0a-1781342863343": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:27:17.524Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:27:17.527Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:27:17.527Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:33:17.527Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-7gbtvajhnqt-1781342867946": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:27:17.524Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:27:17.527Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:27:17.527Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:33:17.527Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-zbwo7yoy5e-1781342870738": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:27:17.524Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:27:17.527Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      },
+      {
+        "moodScore": 6,
+        "stressScore": 5,
+        "contextTags": [
+          "Mock Exam Preparation"
+        ],
+        "optionalNote": "Solved 10 maths integration problems today.",
+        "id": "mood-1781342892927",
+        "timestamp": "2026-06-13T09:28:12.927Z"
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:27:17.527Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:33:17.527Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-qn883r20th-1781342894671": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:27:17.524Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:27:17.527Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:27:17.527Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:33:17.527Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-491ykhyarv7-1781342917515": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:27:17.524Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:27:17.527Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:27:17.527Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:27:17.527Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:27:17.527Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:33:17.527Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      },
+      {
+        "id": "msg-1781342925472",
+        "timestamp": "2026-06-13T09:28:45.472Z",
+        "sender": "student",
+        "text": "I feel very overwhelmed about the physics mocks tomorrow."
+      },
+      {
+        "id": "msg-1781342925477",
+        "timestamp": "2026-06-13T09:28:45.477Z",
+        "sender": "companion",
+        "text": "I hear you, Aspirant. A drop in mock scores is tough, but remember: mocks are just warning lights on your dashboard. They show you where to patch your circuits, not what your final result will be. Take a deep breath. Which specific syllabus corner felt most confusing in today's mock? Let's take it in tiny, digestible steps."
+      }
+    ]
+  },
+  "sarthi-user-hqbhyuqmrh8-1781342963450": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:20.345Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:20.346Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:20.346Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:20.346Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-s4uke927m7-1781342965036": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:20.345Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:20.346Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:20.346Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:20.346Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-lj3sba03li-1781342967826": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:20.345Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:20.346Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      },
+      {
+        "moodScore": 6,
+        "stressScore": 5,
+        "contextTags": [
+          "Mock Exam Preparation"
+        ],
+        "optionalNote": "Solved 10 maths integration problems today.",
+        "id": "mood-1781342968850",
+        "timestamp": "2026-06-13T09:29:28.850Z"
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:20.346Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:20.346Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-gdkgm1wfcbc-1781342975111": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:20.345Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:20.346Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:20.346Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:20.346Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-dhcxk4250ui-1781342978317": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:20.345Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:20.346Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:20.346Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:20.346Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:20.346Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:20.346Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      },
+      {
+        "id": "msg-1781342979505",
+        "timestamp": "2026-06-13T09:29:39.505Z",
+        "sender": "student",
+        "text": "I feel very overwhelmed about the physics mocks tomorrow."
+      },
+      {
+        "id": "msg-1781342979513",
+        "timestamp": "2026-06-13T09:29:39.513Z",
+        "sender": "companion",
+        "text": "I hear you, Aspirant. A drop in mock scores is tough, but remember: mocks are just warning lights on your dashboard. They show you where to patch your circuits, not what your final result will be. Take a deep breath. Which specific syllabus corner felt most confusing in today's mock? Let's take it in tiny, digestible steps."
+      }
+    ]
+  },
+  "sarthi-user-4c66a8esz0s-1781342999106": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:54.278Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:54.280Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:54.280Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:54.280Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-q78gyub1wzc-1781343006013": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:54.278Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:54.280Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:54.280Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:54.280Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-4z1vx27lqfi-1781343008981": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:54.278Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:54.280Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      },
+      {
+        "moodScore": 6,
+        "stressScore": 5,
+        "contextTags": [
+          "Mock Exam Preparation"
+        ],
+        "optionalNote": "Solved 10 maths integration problems today.",
+        "id": "mood-1781343010287",
+        "timestamp": "2026-06-13T09:30:10.287Z"
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:54.280Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:54.280Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-vbkfba0ftg-1781343011993": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:54.278Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:54.280Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:54.280Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:54.280Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      }
+    ]
+  },
+  "sarthi-user-ejjns79w7w7-1781343014703": {
+    "profile": {
+      "name": "Aspirant",
+      "targetExam": "JEE",
+      "studyHoursGoal": 8
+    },
+    "moods": [
+      {
+        "id": "mood-1",
+        "timestamp": "2026-06-09T09:29:54.278Z",
+        "moodScore": 6,
+        "stressScore": 7,
+        "contextTags": [
+          "Mock Test",
+          "Self Study"
+        ],
+        "optionalNote": "Gave the Math practice paper today. Tricky integration section, got stuck and panicked a bit."
+      },
+      {
+        "id": "mood-2",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "moodScore": 4,
+        "stressScore": 8,
+        "contextTags": [
+          "Peer Chat"
+        ],
+        "optionalNote": "Talked to Rohan. He's already finished the physics backlog. Feeling a lot of pressure."
+      },
+      {
+        "id": "mood-3",
+        "timestamp": "2026-06-11T09:29:54.280Z",
+        "moodScore": 7,
+        "stressScore": 5,
+        "contextTags": [
+          "Self Study",
+          "Family Time"
+        ],
+        "optionalNote": "Had tea with parents, talked it out. Better revision session in inorganic chemistry."
+      },
+      {
+        "id": "mood-4",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "moodScore": 8,
+        "stressScore": 3,
+        "contextTags": [
+          "Meditation",
+          "Self Study"
+        ],
+        "optionalNote": "Tried breathing exercise before studying. Sleep was decent. Mechanics numericals solved smoothly."
+      }
+    ],
+    "journals": [
+      {
+        "id": "j-1",
+        "timestamp": "2026-06-10T09:29:54.280Z",
+        "entryText": "Rohan's progress is stressing me out so much. I still have optics chapters left to revise, and when I realize I am lagging behind my confidence plunges. Every mock test feels like it will decide my whole life and future. Parents are supportive but I feel their eyes on me constantly.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Overwhelmed & Self-Doubtful",
+          "stressLevel": "High",
+          "primaryTrigger": "Peer Comparison & Future Anxiety",
+          "triggerDescription": "Comparing study progress with friends (Rohan) coupled with high stakes attached to mock tests leads to severe future anxiety and pacing stress.",
+          "empatheticSummary": "You are experiencing classic preparation burnout driven by comparing your timeline to someone else's. This triggers a fight-or-flight freeze in optics study.",
+          "copingStrategies": [
+            "Study Boundary rules: Do not discuss complete syllabus status with friends till next weekend.",
+            "Optics Breakout: Set a micro-goal of solving just 5 lens formula numericals without timing yourself.",
+            "Use the 4-7-8 Breathing Loop inside the breathing tab to step back when the physical symptoms of comparison hit."
+          ],
+          "isSafetyFlagged": false
+        }
+      },
+      {
+        "id": "j-2",
+        "timestamp": "2026-06-12T09:29:54.280Z",
+        "entryText": "Did an early session today. Felt way more organized. Kept my phone locked in the other room. inorganic revision is boring but manageable in 30 minute chunks. Breathing exercises are helping me reset my pulse rate between chemistry shifts.",
+        "analysisStatus": "completed",
+        "analysis": {
+          "sentiment": "Focused & Grounded",
+          "stressLevel": "Low",
+          "primaryTrigger": "Effective Environment Control & Mindfulness",
+          "triggerDescription": "Removing the smartphone distraction and practicing chunked time blocking directly improved focus and overall prepare confidence.",
+          "empatheticSummary": "Fantastic initiative in scheduling study intervals and reducing reactive phone checking. Building focus momentum step by step.",
+          "copingStrategies": [
+            "Continue 'Phone in the outer room' policy during morning shifts.",
+            "Add a 5-minute movement break between study sprints.",
+            "Log your focus success in tomorrow's mood note."
+          ],
+          "isSafetyFlagged": false
+        }
+      }
+    ],
+    "chats": [
+      {
+        "id": "c-1",
+        "timestamp": "2026-06-12T21:29:54.280Z",
+        "sender": "student",
+        "text": "How do I deal with scoring low in my chemistry mocks? I fell down 20 marks inside organic chemistry."
+      },
+      {
+        "id": "c-2",
+        "timestamp": "2026-06-12T21:35:54.280Z",
+        "sender": "companion",
+        "text": "I completely understand how disappointing that drop feels. But remember: Mock exams are not a final destination, they are diagnostic heatmaps. Organic chemistry requires pattern recognition rather than brute memorization. Let's isolate the specific reaction mechanism that caught you off guard today."
+      },
+      {
+        "id": "msg-1781343016143",
+        "timestamp": "2026-06-13T09:30:16.143Z",
+        "sender": "student",
+        "text": "I feel very overwhelmed about the physics mocks tomorrow."
+      },
+      {
+        "id": "msg-1781343016158",
+        "timestamp": "2026-06-13T09:30:16.158Z",
+        "sender": "companion",
+        "text": "I hear you, Aspirant. A drop in mock scores is tough, but remember: mocks are just warning lights on your dashboard. They show you where to patch your circuits, not what your final result will be. Take a deep breath. Which specific syllabus corner felt most confusing in today's mock? Let's take it in tiny, digestible steps."
+      }
+    ]
+  }
+}

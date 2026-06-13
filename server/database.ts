@@ -1,8 +1,28 @@
 import fs from "fs";
 import path from "path";
+import { createClient } from "@supabase/supabase-js";
 
 const DATA_DIR = path.join(process.cwd(), ".data");
 const DB_FILE = path.join(DATA_DIR, "wellness_db.json");
+
+// Supabase client initialization
+const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+const isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey);
+let supabase: any = null;
+
+if (isSupabaseConfigured) {
+  console.log("Sarthi Backend: Supabase credentials found. Running database on Supabase PostgreSQL.");
+  try {
+    supabase = createClient(supabaseUrl!, supabaseAnonKey!);
+  } catch (err) {
+    console.error("Failed to initialize Supabase client, falling back to local storage:", err);
+    supabase = null;
+  }
+} else {
+  console.warn("Sarthi Backend: SUPABASE_URL / SUPABASE_ANON_KEY missing. Falling back to local JSON database.");
+}
 
 export interface UserProfile {
   name: string;
@@ -45,14 +65,18 @@ export interface ChatMessage {
   text: string;
 }
 
-interface DBStructure {
+interface UserData {
   profile: UserProfile;
   moods: MoodEntry[];
   journals: JournalEntry[];
   chats: ChatMessage[];
 }
 
-const DEFAULT_DB: DBStructure = {
+interface MultiUserDBStructure {
+  [userId: string]: UserData;
+}
+
+const DEFAULT_DB: UserData = {
   profile: {
     name: "Aspirant",
     targetExam: "JEE",
@@ -154,22 +178,39 @@ function ensureDir() {
   }
 }
 
-export function readDB(): DBStructure {
+function readDB(): MultiUserDBStructure {
   ensureDir();
   if (!fs.existsSync(DB_FILE)) {
-    fs.writeFileSync(DB_FILE, JSON.stringify(DEFAULT_DB, null, 2), "utf8");
-    return DEFAULT_DB;
+    const initialDb = { "anonymous-default-user": DEFAULT_DB };
+    fs.writeFileSync(DB_FILE, JSON.stringify(initialDb, null, 2), "utf8");
+    return initialDb;
   }
   try {
     const data = fs.readFileSync(DB_FILE, "utf8");
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    
+    // Support migrating old single-user database structure
+    if (parsed && ("profile" in parsed || "moods" in parsed)) {
+      console.log("Sarthi DB: Migrating database format to multi-user support...");
+      const migrated = {
+        "anonymous-default-user": {
+          profile: parsed.profile || DEFAULT_DB.profile,
+          moods: parsed.moods || DEFAULT_DB.moods,
+          journals: parsed.journals || DEFAULT_DB.journals,
+          chats: parsed.chats || DEFAULT_DB.chats,
+        }
+      };
+      writeDB(migrated);
+      return migrated;
+    }
+    return parsed;
   } catch (err) {
     console.error("Failed to read database, falling back to default:", err);
-    return DEFAULT_DB;
+    return { "anonymous-default-user": DEFAULT_DB };
   }
 }
 
-export function writeDB(db: DBStructure) {
+function writeDB(db: MultiUserDBStructure) {
   ensureDir();
   try {
     fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), "utf8");
@@ -178,99 +219,383 @@ export function writeDB(db: DBStructure) {
   }
 }
 
-// Service APIs
-export function getProfile(): UserProfile {
-  return readDB().profile;
+function getUserData(db: MultiUserDBStructure, userId: string): UserData {
+  if (!db[userId]) {
+    // Populate new users with the mock database values for demonstration purposes
+    db[userId] = JSON.parse(JSON.stringify(DEFAULT_DB));
+    writeDB(db);
+  }
+  return db[userId];
 }
 
-export function updateProfile(profile: Partial<UserProfile>): UserProfile {
+// 1. Profile Service APIs
+export async function getProfile(userId: string): Promise<UserProfile> {
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", userId)
+        .single();
+        
+      if (error) {
+        if (error.code === "PGRST116") { // row not found
+          const newProfile = { id: userId, name: "Aspirant", target_exam: "JEE", study_hours_goal: 8 };
+          await supabase.from("profiles").insert(newProfile);
+          return { name: newProfile.name, targetExam: newProfile.target_exam, studyHoursGoal: newProfile.study_hours_goal };
+        }
+        throw error;
+      }
+      return {
+        name: data.name,
+        targetExam: data.target_exam,
+        studyHoursGoal: data.study_hours_goal,
+      };
+    } catch (err) {
+      console.error("Supabase getProfile failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
-  db.profile = { ...db.profile, ...profile };
+  return getUserData(db, userId).profile;
+}
+
+export async function updateProfile(userId: string, profile: Partial<UserProfile>): Promise<UserProfile> {
+  if (supabase) {
+    try {
+      const dbProfile = {
+        name: profile.name,
+        target_exam: profile.targetExam,
+        study_hours_goal: profile.studyHoursGoal,
+        updated_at: new Date().toISOString()
+      };
+      
+      const { error } = await supabase
+        .from("profiles")
+        .update(dbProfile)
+        .eq("id", userId);
+        
+      if (error) throw error;
+      return await getProfile(userId);
+    } catch (err) {
+      console.error("Supabase updateProfile failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
+  const db = readDB();
+  const userData = getUserData(db, userId);
+  userData.profile = { ...userData.profile, ...profile };
   writeDB(db);
-  return db.profile;
+  return userData.profile;
 }
 
-export function getMoods(): MoodEntry[] {
+// 2. Mood Service APIs
+export async function getMoods(userId: string): Promise<MoodEntry[]> {
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("mood_entries")
+        .select("*")
+        .eq("user_id", userId)
+        .order("timestamp", { ascending: false });
+        
+      if (error) throw error;
+      return data.map((d: any) => ({
+        id: d.id,
+        timestamp: d.timestamp,
+        moodScore: d.mood_score,
+        stressScore: d.stress_score,
+        contextTags: d.context_tags,
+        optionalNote: d.optional_note,
+      }));
+    } catch (err) {
+      console.error("Supabase getMoods failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
-  // Sort by newest first
-  return [...db.moods].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+  const userData = getUserData(db, userId);
+  return [...userData.moods].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 }
 
-export function logMood(entry: Omit<MoodEntry, "id" | "timestamp">): MoodEntry {
+export async function logMood(userId: string, entry: Omit<MoodEntry, "id" | "timestamp">): Promise<MoodEntry> {
+  const newId = "mood-" + Date.now();
+  const timestamp = new Date().toISOString();
+
+  if (supabase) {
+    try {
+      const dbEntry = {
+        id: newId,
+        user_id: userId,
+        mood_score: entry.moodScore,
+        stress_score: entry.stressScore,
+        context_tags: entry.contextTags,
+        optional_note: entry.optionalNote,
+        timestamp
+      };
+      
+      const { error } = await supabase.from("mood_entries").insert(dbEntry);
+      if (error) throw error;
+      
+      return {
+        ...entry,
+        id: newId,
+        timestamp
+      };
+    } catch (err) {
+      console.error("Supabase logMood failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
+  const userData = getUserData(db, userId);
   const newEntry: MoodEntry = {
     ...entry,
-    id: "mood-" + Date.now(),
-    timestamp: new Date().toISOString(),
+    id: newId,
+    timestamp,
   };
-  db.moods.push(newEntry);
+  userData.moods.push(newEntry);
   writeDB(db);
   return newEntry;
 }
 
-export function deleteMood(id: string): boolean {
+export async function deleteMood(userId: string, id: string): Promise<boolean> {
+  if (supabase) {
+    try {
+      const { error, count } = await supabase
+        .from("mood_entries")
+        .delete({ count: "exact" })
+        .eq("id", id)
+        .eq("user_id", userId);
+        
+      if (error) throw error;
+      return true;
+    } catch (err) {
+      console.error("Supabase deleteMood failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
-  const initialLength = db.moods.length;
-  db.moods = db.moods.filter((m) => m.id !== id);
-  if (db.moods.length < initialLength) {
+  const userData = getUserData(db, userId);
+  const initialLength = userData.moods.length;
+  userData.moods = userData.moods.filter((m) => m.id !== id);
+  if (userData.moods.length < initialLength) {
     writeDB(db);
     return true;
   }
   return false;
 }
 
-export function getJournals(): JournalEntry[] {
+// 3. Journal Service APIs
+export async function getJournals(userId: string): Promise<JournalEntry[]> {
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("journal_entries")
+        .select("*")
+        .eq("user_id", userId)
+        .order("timestamp", { ascending: false });
+        
+      if (error) throw error;
+      return data.map((d: any) => ({
+        id: d.id,
+        timestamp: d.timestamp,
+        entryText: d.entry_text,
+        associatedMoodId: d.associated_mood_id,
+        analysisStatus: d.analysis_status,
+        analysis: d.analysis,
+      }));
+    } catch (err) {
+      console.error("Supabase getJournals failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
-  return [...db.journals].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+  const userData = getUserData(db, userId);
+  return [...userData.journals].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 }
 
-export function addJournal(entryText: string, associatedMoodId?: string): JournalEntry {
+export async function addJournal(userId: string, entryText: string, associatedMoodId?: string): Promise<JournalEntry> {
+  const newId = "journal-" + Date.now();
+  const timestamp = new Date().toISOString();
+
+  if (supabase) {
+    try {
+      const dbEntry = {
+        id: newId,
+        user_id: userId,
+        entry_text: entryText,
+        associated_mood_id: associatedMoodId || null,
+        analysis_status: "pending",
+        timestamp
+      };
+      
+      const { error } = await supabase.from("journal_entries").insert(dbEntry);
+      if (error) throw error;
+      
+      return {
+        id: newId,
+        timestamp,
+        entryText,
+        associatedMoodId,
+        analysisStatus: "pending"
+      };
+    } catch (err) {
+      console.error("Supabase addJournal failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
+  const userData = getUserData(db, userId);
   const newEntry: JournalEntry = {
-    id: "journal-" + Date.now(),
-    timestamp: new Date().toISOString(),
+    id: newId,
+    timestamp,
     entryText,
     associatedMoodId,
     analysisStatus: "pending"
   };
-  db.journals.push(newEntry);
+  userData.journals.push(newEntry);
   writeDB(db);
   return newEntry;
 }
 
-export function updateJournalAnalysis(id: string, update: { analysisStatus: "completed" | "failed"; analysis?: JournalAnalysis }): JournalEntry | null {
+export async function updateJournalAnalysis(
+  userId: string,
+  id: string,
+  update: { analysisStatus: "completed" | "failed"; analysis?: JournalAnalysis }
+): Promise<JournalEntry | null> {
+  if (supabase) {
+    try {
+      const dbUpdate = {
+        analysis_status: update.analysisStatus,
+        analysis: update.analysis || null,
+      };
+      
+      const { error } = await supabase
+        .from("journal_entries")
+        .update(dbUpdate)
+        .eq("id", id)
+        .eq("user_id", userId);
+        
+      if (error) throw error;
+      
+      const { data } = await supabase
+        .from("journal_entries")
+        .select("*")
+        .eq("id", id)
+        .single();
+        
+      return data ? {
+        id: data.id,
+        timestamp: data.timestamp,
+        entryText: data.entry_text,
+        associatedMoodId: data.associated_mood_id,
+        analysisStatus: data.analysis_status,
+        analysis: data.analysis,
+      } : null;
+    } catch (err) {
+      console.error("Supabase updateJournalAnalysis failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
-  const idx = db.journals.findIndex((j) => j.id === id);
+  const userData = getUserData(db, userId);
+  const idx = userData.journals.findIndex((j) => j.id === id);
   if (idx !== -1) {
-    db.journals[idx] = {
-      ...db.journals[idx],
+    userData.journals[idx] = {
+      ...userData.journals[idx],
       ...update
     };
     writeDB(db);
-    return db.journals[idx];
+    return userData.journals[idx];
   }
   return null;
 }
 
-export function getChats(): ChatMessage[] {
-  return readDB().chats;
+// 4. Companion Chat Service APIs
+export async function getChats(userId: string): Promise<ChatMessage[]> {
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("chat_messages")
+        .select("*")
+        .eq("user_id", userId)
+        .order("timestamp", { ascending: true });
+        
+      if (error) throw error;
+      return data.map((d: any) => ({
+        id: d.id,
+        timestamp: d.timestamp,
+        sender: d.sender,
+        text: d.text,
+      }));
+    } catch (err) {
+      console.error("Supabase getChats failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
+  const db = readDB();
+  return getUserData(db, userId).chats;
 }
 
-export function addChatMessage(sender: "student" | "companion", text: string): ChatMessage {
+export async function addChatMessage(userId: string, sender: "student" | "companion", text: string): Promise<ChatMessage> {
+  const newId = "msg-" + Date.now();
+  const timestamp = new Date().toISOString();
+
+  if (supabase) {
+    try {
+      const dbMsg = {
+        id: newId,
+        user_id: userId,
+        sender,
+        text,
+        timestamp
+      };
+      
+      const { error } = await supabase.from("chat_messages").insert(dbMsg);
+      if (error) throw error;
+      
+      return {
+        id: newId,
+        timestamp,
+        sender,
+        text,
+      };
+    } catch (err) {
+      console.error("Supabase addChatMessage failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
+  const userData = getUserData(db, userId);
   const newMessage: ChatMessage = {
-    id: "msg-" + Date.now(),
-    timestamp: new Date().toISOString(),
+    id: newId,
+    timestamp,
     sender,
     text,
   };
-  db.chats.push(newMessage);
+  userData.chats.push(newMessage);
   writeDB(db);
   return newMessage;
 }
 
-export function clearChats(): void {
+export async function clearChats(userId: string): Promise<void> {
+  if (supabase) {
+    try {
+      const { error } = await supabase
+        .from("chat_messages")
+        .delete()
+        .eq("user_id", userId);
+        
+      if (error) throw error;
+      return;
+    } catch (err) {
+      console.error("Supabase clearChats failed, using JSON fallback:", err);
+    }
+  }
+  // Local JSON fallback
   const db = readDB();
-  db.chats = [];
+  const userData = getUserData(db, userId);
+  userData.chats = [];
   writeDB(db);
 }

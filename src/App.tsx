@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { UserProfile, MoodEntry, JournalEntry, ChatMessage } from "./types";
 import { apiService } from "./services/api.service";
 import Dashboard from "./components/Dashboard";
@@ -12,7 +12,6 @@ import { motion, AnimatePresence } from "motion/react";
 
 import {
   ShieldAlert,
-  Moon,
   Sparkles,
   Compass,
 } from "lucide-react";
@@ -194,15 +193,45 @@ export default function App() {
     }
   };
 
+  const tabsList = [
+    { id: "dashboard", label: "Cockpit" },
+    { id: "mood", label: "Log Mind Balance" },
+    { id: "journal", label: "Notebook" },
+    { id: "chat", label: "Companion Chat" },
+    { id: "breathing", label: "Physiological Reset" },
+  ] as const;
+
+  // Keyboard navigation for tablist
+  const handleTabKeyDown = (e: React.KeyboardEvent, index: number) => {
+    let newIndex = index;
+    if (e.key === "ArrowRight") {
+      newIndex = (index + 1) % tabsList.length;
+    } else if (e.key === "ArrowLeft") {
+      newIndex = (index - 1 + tabsList.length) % tabsList.length;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    setActiveTab(tabsList[newIndex].id);
+    // Focus the newly active tab button
+    const tabButtons = document.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+    tabButtons[newIndex]?.focus();
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans transition-colors duration-150 relative">
       
       {/* Dynamic processing backdrop load during Gemini Analysis */}
       {isAnalyzingJournal && (
-        <div className="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-40 flex flex-col items-center justify-center p-6 space-y-4 select-none">
+        <div
+          className="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-40 flex flex-col items-center justify-center p-6 space-y-4 select-none"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Analyzing emotional markers"
+        >
           <div className="relative">
-            <div className="w-16 h-16 border-4 border-indigo-400 border-t-transparent rounded-full animate-spin"></div>
-            <Sparkles className="w-6 h-6 text-indigo-400 absolute inset-0 m-auto animate-pulse" />
+            <div className="w-16 h-16 border-4 border-indigo-400 border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
+            <Sparkles className="w-6 h-6 text-indigo-400 absolute inset-0 m-auto animate-pulse" aria-hidden="true" />
           </div>
           <div className="text-center space-y-1.5 max-w-sm">
             <h4 className="text-base font-bold text-slate-100 font-sans tracking-tight">Unpacking emotional nodes...</h4>
@@ -216,7 +245,7 @@ export default function App() {
       {/* Top Banner Navigation bar */}
       <header className="sticky top-0 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 px-6 py-4 flex items-center justify-between z-30 shadow-md">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-xl shadow-lg shadow-indigo-950/20">
+          <div className="p-2 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-xl shadow-lg shadow-indigo-950/20" aria-hidden="true">
             <Compass className="w-5 h-5 text-indigo-100" />
           </div>
           <div>
@@ -229,41 +258,50 @@ export default function App() {
         </div>
 
         {/* Action Controls Tabs (Horizontal) */}
-        <nav className="hidden md:flex items-center space-x-1.5">
-          {[
-            { id: "dashboard", label: "Cockpit" },
-            { id: "mood", label: "Log Mind Balance" },
-            { id: "journal", label: "Notebook" },
-            { id: "chat", label: "Companion Chat" },
-            { id: "breathing", label: "Physiological Reset" },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
-              className={`px-4 py-1.5 rounded-xl text-xs font-medium font-sans tracking-tight transition cursor-pointer relative ${
-                activeTab === tab.id
-                  ? "bg-slate-800 text-slate-100 border border-slate-700/60 shadow-sm"
-                  : "text-slate-400 hover:text-slate-200"
-              }`}
-            >
-              {tab.label}
-              {activeTab === tab.id && (
-                <motion.div
-                  layoutId="active-tab-indicator"
-                  className="absolute bottom-0 left-2 right-2 h-0.5 bg-indigo-500 rounded-full"
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                />
-              )}
-            </button>
-          ))}
+        <nav
+          className="hidden md:flex items-center space-x-1.5"
+          role="tablist"
+          aria-label="Sarthi Cockpit Navigation Tabs"
+        >
+          {tabsList.map((tab, idx) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls="tab-content-container"
+                tabIndex={isActive ? 0 : -1}
+                onKeyDown={(e) => handleTabKeyDown(e, idx)}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-1.5 rounded-xl text-xs font-medium font-sans tracking-tight transition cursor-pointer relative focus:outline-none focus:ring-2 focus:ring-indigo-550 ${
+                  isActive
+                    ? "bg-slate-800 text-slate-100 border border-slate-700/60 shadow-sm"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                {tab.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="active-tab-indicator"
+                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-indigo-500 rounded-full"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </nav>
 
         {/* Global Urgent Emergency Helpline Redirection Trigger */}
         <button
           onClick={() => setIsCrisisOpen(true)}
-          className="px-4 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl text-xs flex items-center space-x-1.5 font-bold transition hover:border-rose-400 cursor-pointer"
+          className="px-4 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl text-xs flex items-center space-x-1.5 font-bold transition hover:border-rose-400 cursor-pointer focus:outline-none focus:ring-2 focus:ring-rose-400"
+          aria-label="Show verified national support crisis numbers list popup"
+          aria-haspopup="dialog"
+          aria-expanded={isCrisisOpen}
         >
-          <ShieldAlert className="w-3.5 h-3.5 animate-pulse" />
+          <ShieldAlert className="w-3.5 h-3.5 animate-pulse" aria-hidden="true" />
           <span className="hidden sm:inline">Emergency Helplines</span>
         </button>
       </header>
@@ -272,28 +310,38 @@ export default function App() {
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8 space-y-6">
         
         {/* Mobile Navigation tab links */}
-        <div className="flex md:hidden items-center justify-between bg-slate-900 border border-slate-800/85 p-1.5 rounded-xl overflow-x-auto text-xs font-sans select-none scrollbar-hide">
+        <div
+          className="flex md:hidden items-center justify-between bg-slate-900 border border-slate-800/85 p-1.5 rounded-xl overflow-x-auto text-xs font-sans select-none scrollbar-hide"
+          role="tablist"
+          aria-label="Sarthi Cockpit Mobile Navigation Tabs"
+        >
           {[
             { id: "dashboard", label: "Cockpit" },
             { id: "mood", label: "Log" },
             { id: "journal", label: "Notebook" },
             { id: "chat", label: "Companion" },
             { id: "breathing", label: "Reset" },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
-              className={`px-3 py-1.5 rounded-lg whitespace-nowrap tracking-tight transition-all cursor-pointer ${
-                activeTab === tab.id ? "bg-slate-800 text-slate-100 font-bold" : "text-slate-400"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+          ].map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls="tab-content-container"
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`px-3 py-1.5 rounded-lg whitespace-nowrap tracking-tight transition-all cursor-pointer focus:outline-none focus:ring-1 focus:ring-indigo-500 ${
+                  isActive ? "bg-slate-800 text-slate-100 font-bold" : "text-slate-400"
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Page Tab Renderings with graceful motion layout transitions */}
-        <div id="tab-content-container">
+        <div id="tab-content-container" role="tabpanel" aria-labelledby={`${activeTab}-tab`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -346,10 +394,19 @@ export default function App() {
 
       {/* Floating alert errors toast bar */}
       {errorMessage && (
-        <div className="fixed bottom-6 right-6 p-4 bg-rose-600 border border-rose-500 text-white rounded-xl shadow-2xl text-xs flex items-center space-x-2 z-50 animate-fade-in max-w-sm font-sans font-medium">
-          <ShieldAlert className="w-4 h-4 shrink-0 animate-pulse" />
+        <div
+          className="fixed bottom-6 right-6 p-4 bg-rose-600 border border-rose-500 text-white rounded-xl shadow-2xl text-xs flex items-center space-x-2 z-50 animate-fade-in max-w-sm font-sans font-medium"
+          role="alert"
+        >
+          <ShieldAlert className="w-4 h-4 shrink-0 animate-pulse" aria-hidden="true" />
           <span>{errorMessage}</span>
-          <button onClick={() => setErrorMessage("")} className="hover:opacity-75 pl-2 text-rose-200 font-bold cursor-pointer">✕</button>
+          <button
+            onClick={() => setErrorMessage("")}
+            className="hover:opacity-75 pl-2 text-rose-205 font-bold cursor-pointer focus:outline-none"
+            aria-label="Dismiss warning message"
+          >
+            ✕
+          </button>
         </div>
       )}
 

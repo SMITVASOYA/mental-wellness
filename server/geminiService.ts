@@ -133,7 +133,7 @@ Categorize and evaluate:
 Return results strictly in the structured JSON schema defined. Do not include any standard conversational preamble or code blocks.`;
 
     const result = await client.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-2.5-flash",
       contents: `Student journal entry: "${entryText}"`,
       config: {
         systemInstruction: systemPrompt,
@@ -202,7 +202,7 @@ export async function getCompanionChatResponse(
   }
 
   try {
-    const chatModel = "gemini-3.5-flash";
+    const chatModel = "gemini-2.5-flash";
     
     // Setup a clean system context for our compassionate peer guide
     const systemInstruction = `You are "Sarthi" (Empathetic Companion), a brilliant, kind-hearted peer mentor and mindfulness coach for students preparing for high-stakes exams (like JEE, NEET, UPSC, CAT, GATE).
